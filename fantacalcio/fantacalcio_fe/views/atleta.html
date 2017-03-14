@@ -1,0 +1,10 @@
+<h1 class="text-center">
+    Tesserato n.{{item.id}}
+</h1>
+<div class="row well well-sm">
+    <div class="col-sm-6 col-xs-12" ng-repeat="(k,v) in item">
+        <label class="col-sm-4 col-form-label">{{ k }}: </label>
+        <div class="col-sm-8 text-right">{{ v }}</div>
+    </div>
+</div>
+<center><button class="btn btn-default" ng-click="back()"><em class="fa fa-undo"></em> Indietro</button></center>

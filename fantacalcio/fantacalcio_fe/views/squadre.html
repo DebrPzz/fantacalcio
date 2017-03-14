@@ -1,0 +1,56 @@
+<h1>
+    Registro Squadre
+</h1>
+<p>
+    Questa pagina contiene l'elenco delle squadre e dovrà:
+    <ul>
+        <li>Permettere la cancellazione e creazione di un elemento</li>
+        <li>Ad ogni modifica la tabella dovrà aggiornarsi</li>
+    </ul>
+</p>
+
+
+<form>
+<input ng-model="item.denominazione" placeholder="nome squadra"/>
+
+<input ng-model="item.allenatore" placeholder="allenatore"/>
+<input type="date" ng-model="item.datafondazione" placeholder="data fondazione"/>
+<button ng-click="save(item)">Salva</button>
+</form>
+<br />
+
+<table class="table-bordered table table-responsive">
+    <thead>
+        <tr>
+            <!--th>ID</th-->
+            <th>Nome squadra</th>
+            <th>Allenatore</th>
+            <th>Data fondazione</th>
+			
+            <th><em>Azioni</em></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in items">
+            <!--td>{{item.id}}</td-->
+            <td>{{item.denominazione}}</td>
+            <td>{{item.allenatore}}</td>
+            <td>
+			{{item.datafondazione | date : 'dd/mm/yyyy' }}
+			</td>
+           
+		   <!-- dateAsString = $filter('date')(item_date, "yyyy-MM-dd"); -->
+		   <!-- https://sonnguyen.ws/angularjs-datetime-format/ -->
+		   <!-- http://www.encodedna.com/angularjs/tutorial/date-filter-in-angularjs.htm-->
+		   
+            <td>
+                <!--a class="btn btn-sm btn-info" ng-click="view(item.id)"><i class="fa fa-eye"></i> Apri</a-->
+                <a class="btn btn-sm btn-danger"  ng-click="del(item.id)"><i class="fa fa-trash"></i> Cancella</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+
+</script>

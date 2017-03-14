@@ -1,0 +1,61 @@
+<h1>
+    Registro degli Atleti
+</h1>
+<p>
+    Questa pagina contiene l'elenco dei tesserati e dovrà:
+    <ul>
+        <li>Permettere la cancellazione e creazione di un elemento</li>
+        <li>Validare la creazione solo con obbligatorierà del campo nome</li>
+        <li>Ad ogni modifica la tabella dovrà aggiornarsi</li>
+        <li>Presentare almeno un comportamento responsivo grazie ad a classi e css</li>
+    </ul>
+</p>
+
+<form class="form-inline">
+<div class="input-group">
+	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	<input type="text" class="form-control" ng-model="item.nome" placeholder="nome giocatore"/>
+</div>
+<div class="input-group">
+	<span class="input-group-addon"><span class="glyphicons glyphicons-soccer-ball"></span></span>
+	<input class="form-control" ng-model="item.ruolo" placeholder="ruolo"/>
+</div>
+<div class="input-group">
+	<span class="input-group-addon"><i class="glyphicon glyphicon-t-shirt"></i></span>
+	<select placeholder="squadra" class="form-control" ng-options="item.denominazione for item in items | unique:'denominazione'" ng-model="selected">
+
+	<!-- http://stackoverflow.com/questions/15914658/how-to-make-ng-repeat-filter-out-duplicate-results -->
+	<!-- https://tutorialedge.net/removing-duplicates-ng-repeat-angularjs -->
+	<option> {{item.denominazione}} </option>
+	</select>
+</div>
+<button class="btn btn-default" ng-click="save(item)">Salva</button>
+</form>
+
+<br />
+
+<table class="table-bordered table table-responsive">
+    <thead>
+        <tr>
+            <!--th>ID</th-->
+            <th>Nome</th>
+            <th>Ruolo</th>
+            <th>Squadra</th>
+			
+            <th><em>Azioni</em></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in items">
+            <!--td>{{item.id}}</td-->
+            <td>{{item.nome}}</td>
+            <td>{{item.ruolo}}</td>
+            <td>{{item.denominazione}}</td>
+           
+            <td>
+                <!--a class="btn btn-sm btn-info" ng-click="view(item.id)"><i class="fa fa-eye"></i> Apri</a-->
+                <a class="btn btn-sm btn-danger"  ng-click="del(item.id)"><i class="fa fa-trash"></i> Cancella</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

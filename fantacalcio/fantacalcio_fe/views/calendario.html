@@ -1,0 +1,48 @@
+<h1>
+    Calendario partite
+</h1>
+<p>
+    Questa pagina contiene il calendario delle partite e dovrà:
+    <ul>
+        <li>Permettere la cancellazione e creazione di un elemento</li>
+        <li>Ad ogni modifica la tabella dovrà aggiornarsi</li>
+    </ul>
+</p>
+
+<form>
+Squadre: <br />
+<input ng-model="item.squadracasa" placeholder="casa"/> vs
+<input ng-model="item.squadraospite" placeholder="ospite"/><br />
+Punteggio: <br />
+<input type="number" ng-model="item.goalcasa" style="width:45px;"/> a <input  style="width:45px;" type="number" ng-model="item.goalospite"/> <br />
+Data incontro: <br />
+<input type="date" ng-model="item.data" placeholder="data incontro"/> <br /><br />
+<button ng-click="save(item)">Salva</button>
+</form>
+<br />
+
+<table class="table-bordered table table-responsive">
+    <thead>
+        <tr>
+            <!--th>ID</th-->
+            <th>Partita</th>
+            <th>Punteggio</th>
+			<th>Data</th>
+			
+            <th><em>Azioni</em></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in items">
+            <!--td>{{item.id}}</td-->
+            <td>{{item.squadracasa}} - {{item.squadraospite}}</td>
+            <td> {{item.goalcasa}} - {{item.goalospite}}</td>
+            <td>{{item.data | date:'dd/mm/yyyy'}}</td>
+           
+            <td>
+                <!--a class="btn btn-sm btn-info" ng-click="view(item.id)"><i class="fa fa-eye"></i> Apri</a-->
+                <a class="btn btn-sm btn-danger"  ng-click="del(item.id)"><i class="fa fa-trash"></i> Cancella</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
